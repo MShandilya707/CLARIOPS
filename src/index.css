@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mobile-first responsive utilities */
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+}
+
+/* ClickUp-inspired design system */
+@layer base {
+  :root {
+    --cu-primary: #1d4ed8;
+    --cu-primary-hover: #1e3a8a;
+    --cu-primary-light: #3b82f6;
+    --cu-secondary: #00d4aa;
+    --cu-warning: #fdcb6e;
+    --cu-danger: #e17055;
+    --cu-success: #059669;
+    --cu-gray-50: #f8fafc;
+    --cu-gray-100: #f1f5f9;
+    --cu-gray-200: #e2e8f0;
+    --cu-gray-300: #cbd5e1;
+    --cu-gray-400: #94a3b8;
+    --cu-gray-500: #64748b;
+    --cu-gray-600: #475569;
+    --cu-gray-700: #334155;
+    --cu-gray-800: #1e293b;
+    --cu-gray-900: #0f172a;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background-color: var(--cu-gray-50);
+    color: var(--cu-gray-800);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
+  }
+  
+  /* Mobile viewport fix */
+  html {
+    height: 100%;
+    height: -webkit-fill-available;
+  }
+  
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  /* Prevent zoom on input focus on iOS */
+  @media screen and (max-width: 768px) {
+    input, textarea, select {
+      font-size: 16px !important;
+    }
+  }
+}
+
+@layer components {
+  .cu-btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 touch-manipulation;
+  }
+  
+  .cu-btn-primary {
+    @apply cu-btn text-white shadow-sm;
+    background-color: var(--cu-primary);
+    background: linear-gradient(135deg, var(--cu-primary) 0%, #1e3a8a 100%);
+  }
+  
+  .cu-btn-primary:hover {
+    background-color: var(--cu-primary-hover);
+    background: linear-gradient(135deg, var(--cu-primary-hover) 0%, #1e3a8a 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.4);
+  }
+  
+  .cu-btn-secondary {
+    @apply cu-btn bg-white border shadow-sm;
+    color: var(--cu-gray-700);
+    border-color: var(--cu-gray-300);
+  }
+  
+  .cu-btn-secondary:hover {
+    background-color: var(--cu-gray-50);
+    border-color: var(--cu-gray-400);
+    transform: translateY(-1px);
+  }
+  
+  .cu-card {
+    @apply bg-white rounded-xl shadow-sm overflow-hidden;
+    border: 1px solid var(--cu-gray-200);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  
+  .cu-card:hover {
+    box-shadow: 0 4px 6px rgba(29, 78, 216, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+  }
+  
+  .cu-input {
+    @apply w-full px-3 py-2 border rounded-lg text-sm transition-all duration-200 touch-manipulation;
+    background-color: white;
+    border-color: var(--cu-gray-300);
+  }
+  
+  .cu-input:focus {
+    @apply outline-none ring-2;
+    ring-color: var(--cu-primary);
+    border-color: var(--cu-primary);
+    background-color: white;
+  }
+  
+  .cu-sidebar {
+    @apply bg-white;
+    border-color: var(--cu-gray-200);
+    box-shadow: 1px 0 3px rgba(29, 78, 216, 0.08);
+  }
+  
+  .cu-nav-item {
+    @apply flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer touch-manipulation;
+    color: var(--cu-gray-600);
+    font-weight: 400;
+  }
+  
+  .cu-nav-item:hover {
+    color: var(--cu-gray-800);
+  }
+  
+  .cu-nav-item.active {
+    color: var(--cu-gray-900);
+    font-weight: 400;
+  }
+  
+  .cu-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium touch-manipulation;
+  }
+  
+  .cu-badge-primary {
+    @apply cu-badge text-white;
+    background-color: var(--cu-primary);
+  }
+  
+  .cu-badge-success {
+    @apply cu-badge text-white;
+    background-color: var(--cu-success);
+  }
+  
+  .cu-badge-warning {
+    @apply cu-badge text-white;
+    background-color: var(--cu-warning);
+  }
+  
+  .cu-badge-danger {
+    @apply cu-badge text-white;
+    background-color: var(--cu-danger);
+  }
+  
+  .cu-badge-gray {
+    @apply cu-badge;
+    background-color: var(--cu-gray-200);
+    color: var(--cu-gray-700);
+  }
+  
+  /* Mobile-specific improvements */
+  @media (max-width: 768px) {
+    .cu-btn {
+      @apply min-h-[44px] touch-manipulation;
+    }
+    
+    .cu-input {
+      @apply min-h-[44px] touch-manipulation;
+    }
+    
+    .cu-nav-item {
+      @apply min-h-[44px] touch-manipulation;
+    }
+  }
+}
