@@ -26,6 +26,8 @@ This API server enables integration between Large Language Models (LLM) and What
                          └──────────────┘
 ```
 
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed architecture documentation.
+
 ## Prerequisites
 
 - Node.js 18+ 
@@ -361,6 +363,19 @@ Logs include:
 - [ ] Rate limiting middleware
 - [ ] Message queue for high traffic
 - [ ] Database persistence for conversations
+
+## Documentation
+
+- **[QUICKSTART.md](./QUICKSTART.md)** - Get started in 5 minutes
+- **[USAGE.md](./USAGE.md)** - Detailed usage examples and best practices
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture and design
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Deploy to production platforms
+
+## Examples
+
+- **[examples/test-api.sh](./examples/test-api.sh)** - Bash script for testing
+- **[examples/postman-collection.json](./examples/postman-collection.json)** - Postman collection
+- **[examples/webhook-test.json](./examples/webhook-test.json)** - Sample webhook payload
 
 ## License
 
